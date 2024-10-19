@@ -1,36 +1,49 @@
 # SMS Spam Detection - NLP Project
 
-## Overview
+This repository contains a project for detecting SMS spam using Natural Language Processing (NLP) techniques and machine learning algorithms. The dataset used is **SMS Spam Collection v.1**, which includes labeled SMS messages as either "ham" (legitimate) or "spam."
 
-This project focuses on detecting spam messages in SMS data using Natural Language Processing (NLP) techniques. The dataset used is the **SMS Spam Collection v.1**, which contains 5,574 SMS messages tagged as "ham" (legitimate) or "spam". The goal of this project is to preprocess the text data and apply machine learning algorithms to classify the messages.
+## Project Structure
+
+- **dataset/**: This folder contains the `SMSSpamcollection.csv` dataset used in the project.
+- **BOW_implementation.ipynb**: Implements Bag of Words (BOW) for word vectorization and uses Multinomial Naive Bayes for classification.
+- **TFIDF_implementation.ipynb**: Implements TF-IDF for word vectorization and uses Multinomial Naive Bayes for classification.
+- **Word2Vec_implementation_I.ipynb**: Implements Word2Vec (without removing stopwords) for word vectorization and uses RandomForestClassifier for classification.
+- **Word2Vec_implementation_II.ipynb**: Implements Word2Vec (with stopwords removed) for word vectorization and uses RandomForestClassifier for classification.
+- **requirements.txt**: Lists all dependencies required to run the project.
+
+## Notebooks Overview
+
+1. **BOW_implementation.ipynb**:
+   - Preprocessing: Lowercasing, removing special characters, removing stopwords, and lemmatization.
+   - Word Vectorization: Bag of Words (BOW).
+   - Classifier: Multinomial Naive Bayes.
+   - **Accuracy**: 98.65%.
+
+2. **TFIDF_implementation.ipynb**:
+   - Preprocessing: Lowercasing, removing special characters, removing stopwords, and lemmatization.
+   - Word Vectorization: TF-IDF.
+   - Classifier: Multinomial Naive Bayes.
+   - **Accuracy**: 97.21%.
+
+3. **Word2Vec_implementation_I.ipynb**:
+   - Preprocessing: Using `gensim.utils.simple_preprocess()` (without stopword removal).
+   - Word Vectorization: Word2Vec (trained on the training set).
+   - Classifier: RandomForestClassifier.
+   - **Accuracy**: 96.85%.
+
+4. **Word2Vec_implementation_II.ipynb**:
+   - Preprocessing: Lowercasing, removing special characters, removing stopwords, and lemmatization.
+   - Word Vectorization: Word2Vec (trained on the training set).
+   - Classifier: RandomForestClassifier.
+   - **Accuracy**: 96.31%.
 
 ## Dataset
 
-The dataset used is the **SMS Spam Collection v.1**, which can be found [here](http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/). It contains:
+The dataset used in this project, **SMS Spam Collection v.1**, contains a collection of SMS messages categorized as either spam or ham. It is stored in the `dataset/` directory.
 
-- 4,827 "ham" (legitimate) messages.
-- 747 "spam" messages.
-
-## Approach
-
-### 1. Data Preprocessing
-The raw text data is cleaned and prepared using the following steps:
-- **Lowercasing**: Convert all text to lowercase.
-- **Removing special characters**: Eliminate non-alphabetic characters.
-- **Stopwords removal**: Remove common English words that don't add significant meaning (using NLTK's stopwords list).
-- **Lemmatization**: Normalize words to their root forms using `WordNetLemmatizer`.
-
-### 2. Feature Extraction
-The cleaned text is transformed into numerical features using the **Bag of Words (BOW)** model, which converts text into a matrix of token counts.
-
-### 3. Model Training
-A **Multinomial Naive Bayes** algorithm was used for classification. The model achieved an impressive accuracy of **99%** on the test data.
-
-### 4. Future Enhancements
-Further improvements to the model will include:
-- Using **TF-IDF** (Term Frequency-Inverse Document Frequency) for feature extraction.
-- Applying **Word2Vec (Average Word2Vec)** for better representation of text data.
-- Experimenting with other machine learning algorithms for better performance.
+- **Total Records**: 5,574 messages.
+  - **Ham**: 4,827 messages (86.6%)
+  - **Spam**: 747 messages (13.4%)
 
 
 ## Installation and Usage
@@ -46,13 +59,12 @@ Further improvements to the model will include:
    ```bash
    jupyter notebook spam-ham(using BOW).ipynb
 
-## Results
+## Future Improvements
 
-- Model: **Multinomial Naive Bayes**
-- Accuracy: **99%**
+- Explore deep learning models like LSTM or transformers.
+- Experiment with more advanced embeddings (GloVe, FastText).
+- Perform hyperparameter tuning for improved accuracy.
 
-### Classification Report
-![image](https://github.com/user-attachments/assets/be81967b-76d0-4515-9f06-81116c29812d)
 
 
 
